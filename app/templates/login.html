@@ -9,7 +9,8 @@
 {%endblock%}
   
 {%block content%}
-    {%include "includes/nav.html"%}   
+    {%include "includes/nav.html"%}
+    <div class=" flex-container">   
     <form method="POST">
         {{form.hidden_tag()}}
         <div class="mb-3">
@@ -23,4 +24,5 @@
         </div>
         {{form.submit_btn}}
       </form>
+    </div>
 {%endblock%}

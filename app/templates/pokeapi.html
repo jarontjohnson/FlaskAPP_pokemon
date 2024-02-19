@@ -6,6 +6,7 @@
 
 {%block content%}
 {%include "includes/nav.html"%}
+<div class="flex-container">
 <form method="POST">
     <div class="mb-3">
       <label for="name" class="form-label">Pokemon Name</label>
@@ -13,7 +14,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
+</div>
   {% if pokemon %}
   <div class="card" style="width: 18rem;">
     <img src="{{pokemon.sprite}}" class="card-img-top" alt="...">
@@ -29,6 +30,7 @@
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
+
   {%endif%}
 
 {%endblock%}
