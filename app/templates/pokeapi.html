@@ -5,6 +5,7 @@
 {%endblock%}
 
 {%block content%}
+{%include "includes/nav.html"%}
 <form method="POST">
     <div class="mb-3">
       <label for="name" class="form-label">Pokemon Name</label>
@@ -15,7 +16,7 @@
 
   {% if pokemon %}
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="{{pokemon.sprite}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-name">{{pokemon.name}}</h5>
       <p class="card-text">Pokemons attributes will show:(Hit Power), (Defense), (Attack), (Ability)</p>
