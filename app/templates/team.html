@@ -7,15 +7,9 @@
 {%block content%}
 {%include "includes/nav.html"%}
 <div class="flex-container">
-<form method="POST">
-    <div class="mb-3">
-      <label for="name" class="form-label">Pokemon Name</label>
-      <input type="text" class="form-control" id="name" name="name">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+
 </div>
-  {% if pokemon %}
+  {% for pokemon in team %}
   <div class="card" style="width: 18rem;">
     <img src="{{pokemon.sprite}}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -27,10 +21,10 @@
         <li class="list-group-item">{{pokemon.attack}}</li>
         <li class="list-group-item">{{pokemon.ability}}</li>
       </ul>
-      <a href="{{url_for('main.catch_pokemon', name=pokemon.name)}}" class="btn btn-primary">Catch</a>
+      <a href="{{url_for('main.remove_pokemon', name=pokemon.name)}}" class="btn btn-primary">Remove Pokemon</a>
     </div>
   </div>
 
-  {%endif%}
+  {%endfor%}
 
 {%endblock%}

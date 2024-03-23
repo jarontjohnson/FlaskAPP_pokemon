@@ -1,9 +1,10 @@
 from . import auth
 from .forms import LoginForm , SignupForm
 from flask import request, render_template, flash, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from app.models import User
 from werkzeug.security import check_password_hash
+
 
 
 
@@ -17,7 +18,7 @@ def signup():
         new_user = User(username, email, password)
         new_user.save()
         flash('Success! Thank you for Signing up', 'Success')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
     else:
         return render_template('signup.html', form=form)
     
@@ -31,7 +32,7 @@ def login():
         if queried_user and check_password_hash(queried_user.password, password):
             flash(f'Welcome {queried_user.username}!', 'info')
             login_user(queried_user)
-            return redirect(url_for('home'))
+            return redirect(url_for('main.home'))
         else: 
             flash('incorrect username, email or password....please try again', 'warning')
         return render_template("login.html", form=form)
@@ -39,6 +40,7 @@ def login():
         return render_template("login.html", form=form)
     
 @auth.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
